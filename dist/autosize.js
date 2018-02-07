@@ -105,25 +105,8 @@
 			ta.style.overflowY = value;
 		}
 
-		function getParentOverflows(el) {
-			var arr = [];
-
-			while (el && el.parentNode && el.parentNode instanceof Element) {
-				if (el.parentNode.scrollTop) {
-					arr.push({
-						node: el.parentNode,
-						scrollTop: el.parentNode.scrollTop
-					});
-				}
-				el = el.parentNode;
-			}
-
-			return arr;
-		}
-
 		function resize() {
 			var originalHeight = ta.style.height;
-			var overflows = getParentOverflows(ta);
 			var docTop = document.documentElement && document.documentElement.scrollTop; // Needed for Mobile IE (ticket #240)
 
 			ta.style.height = '';
@@ -140,11 +123,6 @@
 
 			// used to check if an update is actually necessary on window.resize
 			clientWidth = ta.clientWidth;
-
-			// prevents scroll-position jumping
-			overflows.forEach(function (el) {
-				el.node.scrollTop = el.scrollTop;
-			});
 
 			if (docTop) {
 				document.documentElement.scrollTop = docTop;

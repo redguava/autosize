@@ -1,3 +1,6 @@
+## Red Guava fork
+I forked this to get rid of the problem with iOS jumping the scroll position to under the keyboard. There is a [similar PR](https://github.com/jackmoore/autosize/pull/352) in the autosize repo but the owner feels it is a regression on desktop since it doesn't handle scrolling parents with nested overflow. I don't believe we have any cases where that would cause a problem for us.
+
 ## Summary
 
 Autosize is a small, stand-alone script to automatically adjust textarea height to fit text.
